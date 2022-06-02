@@ -1,17 +1,10 @@
-import { Button, Checkbox, List, ListItem, Typography } from "@mui/material";
 import React from "react";
+import TodoListItem from "./TodoListItem";
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
   return (
     <>
-      <List>
-        <ListItem>
-          <Checkbox></Checkbox>
-          <Typography></Typography>
-          <Button></Button>
-          <Button></Button>
-        </ListItem>
-      </List>
+      {todos && todos.map((todo) => <TodoListItem key={todo.id} todo={todo} />)}
     </>
   );
 };

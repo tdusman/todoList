@@ -1,17 +1,31 @@
 import { Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
-const InputTodo = () => {
+const InputTodo = (props) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const getTodoValue = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const addTodo = () => {
+    props.inputTodo(inputValue);
+    setInputValue("");
+  };
+
   return (
     <>
       <TextField
-        id=""
+        // id=""
         label="Add Todo"
         variant="outlined"
-        // value={}
-        // onChange={}
+        value={inputValue}
+        onChange={getTodoValue}
       ></TextField>
-      <Button></Button>
+      <Button variant="contained" onClick={addTodo}>
+        {" "}
+        Add Todo
+      </Button>
     </>
   );
 };
