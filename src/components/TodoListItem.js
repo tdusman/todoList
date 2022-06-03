@@ -1,14 +1,18 @@
 import React from "react";
 import { Button, List, ListItem, Typography } from "@mui/material";
 
-const TodoListItem = (props) => {
+const TodoListItem = ({ todo, editTodo, delTodo }) => {
   return (
     <>
       <List>
         <ListItem>
-          <Typography>{props.todo.title}</Typography>
-          <Button variant="outlined">Edit</Button>
-          <Button variant="outlined">Delete</Button>
+          <Typography>{todo.title}</Typography>
+          <Button variant="outlined" onClick={() => editTodo(todo.id)} >
+            Edit
+          </Button>
+          <Button variant="outlined" onClick={() => delTodo(todo.id)}>
+            Delete
+          </Button>
         </ListItem>
       </List>
     </>

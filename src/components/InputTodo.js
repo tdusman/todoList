@@ -1,16 +1,31 @@
 import { Button, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const InputTodo = (props) => {
+const InputTodo = ({ inputTodo, editTitle }) => {
   const [inputValue, setInputValue] = useState("");
+  //const [track, setTrack] = useState(false);
+
+  useEffect(() => {
+    editTitle ? setInputValue(editTitle) : setInputValue("");
+  }, [editTitle]);
+
+  // setInputValue(inputValue);
 
   const getTodoValue = (e) => {
+    // setEditTitle && setTrack(true);
     setInputValue(e.target.value);
   };
 
+  // const editTodo=()=>{
+  //   editTitle && setTrack(true);
+  // }
+
+  //console.log(editTitle, "=====", inputValue);
+
   const addTodo = () => {
-    props.inputTodo(inputValue);
+    inputTodo(inputValue);
     setInputValue("");
+    // setTrack(false);
   };
 
   return (
